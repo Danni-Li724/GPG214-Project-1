@@ -1,0 +1,133 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Packed Assets
+  m_EditorClassIdentifier: 
+  m_GroupName: Packed Assets
+  m_GUID: 1bd72d1ba5cef9e45bac1dee461e7e82
+  m_SerializeEntries:
+  - m_GUID: 0ca70e839f3d00b488baaf11441d2894
+    m_Address: Assets/Art/icon_boy.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0d653f10b83aba74ea549d3ee028eee8
+    m_Address: Assets/Art/cargo_glasses.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 123d51d3d1d03c041bcb6420d556802f
+    m_Address: Assets/Art/cargo_milk.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 18de6eb81acdbeb489d6af66e067df08
+    m_Address: Assets/Art/customer_yellow.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3b872baf7873ca540a35798115c399f2
+    m_Address: Assets/Art/customer_green.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 48db313cc625eb049ab4bfa8dc7a1dc1
+    m_Address: Assets/Art/package_glass.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4936734499f6e494ea168ea22f2a1e82
+    m_Address: Assets/Art/react_happy.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5fd930eb3f362034588e1348ce9e2d48
+    m_Address: Assets/Art/request_glass.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6f87b6c60c5bff54995dd2bbce644225
+    m_Address: Assets/Art/package_normal.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 71f3322236a2db54bbf8d01757e7bdcf
+    m_Address: Assets/Art/package_book.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 80bd44341e771d949ac6f5556fd5f6ce
+    m_Address: Assets/Art/react_sad.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8ee068219d15c5e419d16fb198cc43da
+    m_Address: Assets/Art/package_milk.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 94132cc1161ffd3419a2be3eeffa274e
+    m_Address: Assets/Art/icon_man.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 97be87b7d3476ad4cac19959336ec61a
+    m_Address: Assets/Art/icon_girl.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a507225da9059a64c96186d719976fb3
+    m_Address: Assets/Art/request_milk.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a99071c35ec0ccd4d8abe00197024ec4
+    m_Address: Assets/Art/request_book.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: abc9b281ca16f2a4eb9038e8e1bf98d5
+    m_Address: Assets/Art/customer_red.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b80494c14e732774e8a110d141bef617
+    m_Address: Assets/Art/cargo_books.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c4960f9f360b8cc40bffe828c57c1369
+    m_Address: Assets/Art/cargo_clothes.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cd2d177ec87fc5d43b08ab7f75a561af
+    m_Address: Assets/Art/icon_woman.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d07bf058995a24c4ba28c027fd111959
+    m_Address: Assets/Art/request_clothes.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f64b54732e486fc4f889ce54959b60d8
+    m_Address: Assets/Art/customer_blue.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 7aeb386539e5139438a337f46ec4655a, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 44fdff91238dfe14e9d6ddefaadd351e, type: 2}
+    - {fileID: 11400000, guid: 1864e042e1ee0d44aacccbab1d965398, type: 2}

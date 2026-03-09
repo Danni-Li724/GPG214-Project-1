@@ -48,23 +48,41 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Gameplay\Cargo.cs" />
     <Compile Include="Assets\Scripts\Data\CargoTypeSO.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\CustomerRequest.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\IInteractable.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\PlayerInteractor.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\WaveCoordinator.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\PlayerInputReader.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\CargoQueue.cs" />
     <Compile Include="Assets\Scripts\Saving\JSONWriter.cs" />
     <Compile Include="Assets\Scripts\Saving\SaveSystem.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\PackagingOptionsPanel.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\DeliveryPoint.cs" />
     <Compile Include="Assets\Scripts\Practices\FileSystems.cs" />
     <Compile Include="Assets\Scripts\UI\MenuIconSelector.cs" />
     <Compile Include="Assets\Scripts\Core Systems\GameSession.cs" />
     <Compile Include="Assets\Scripts\UI\PlayerInGameProfileUI.cs" />
+    <Compile Include="Assets\Scripts\Data\AddressableAssetProvider.cs" />
+    <Compile Include="Assets\Scripts\Data\PackagingData.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\CustomerSpawner.cs" />
     <Compile Include="Assets\Scripts\Practices\PlayerData.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\CargoMover.cs" />
     <Compile Include="Assets\Scripts\Core Systems\SystemFinder.cs" />
     <Compile Include="Assets\Scripts\Saving\SavePaths.cs" />
     <Compile Include="Assets\Scripts\TestCargoButtons.cs" />
     <Compile Include="Assets\Scripts\Practices\ClassPractice.cs" />
     <Compile Include="Assets\Scripts\Core Systems\SceneLoader.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\CargoSpawner.cs" />
     <Compile Include="Assets\Scripts\Data\CargoDatabaseSO.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Customer.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\Data\ReactionKeysSO.cs" />
     <Compile Include="Assets\Scripts\Practices\PlayerDataUI.cs" />
     <Compile Include="Assets\Scripts\TestCargoSpawner.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\PlayerBootstrap.cs" />
     <Compile Include="Assets\Scripts\Data\PlayerProfileData.cs" />
     <Compile Include="Assets\Scripts\UI\MenuUI.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\PackagingStation.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Library\PackageCache\com.unity.burst@1df634d836b8\package.json" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
@@ -80,10 +98,12 @@
     <None Include="Library\PackageCache\com.unity.ide.visualstudio@74aa435fc4bb\ValidationConfig.json" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Library\PackageCache\com.unity.mathematics@8017b507cc74\package.json" />
+    <None Include="Library\PackageCache\com.unity.scriptablebuildpipeline@c60a910e7421\package.json" />
     <None Include="Library\PackageCache\com.unity.burst@1df634d836b8\ValidationExceptions.json" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
     <None Include="Library\PackageCache\com.unity.visualscripting@6279e2b7c485\package.json" />
     <None Include="Library\PackageCache\com.unity.collab-proxy@1e5e48aff19d\package.json" />
+    <None Include="Library\PackageCache\com.unity.addressables@45e9abf44299\package.json" />
     <None Include="Library\PackageCache\com.unity.ide.visualstudio@74aa435fc4bb\package.json" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Library\PackageCache\com.unity.ide.rider@1f60b3138684\package.json" />
@@ -107,6 +127,7 @@
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Library\PackageCache\com.unity.collab-proxy@1e5e48aff19d\ValidationConfig.json" />
     <None Include="Library\PackageCache\com.unity.2d.aseprite@dba7c65ef731\ValidationExceptions.json" />
+    <None Include="Library\PackageCache\com.unity.profiling.core@aac7b93912bc\package.json" />
     <None Include="Library\PackageCache\com.unity.timeline@6b9e48457ddb\ValidationExceptions.json" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Library\PackageCache\com.unity.2d.aseprite@dba7c65ef731\package.json" />
@@ -480,22 +501,22 @@
       <HintPath>D:\UnityEditor\6000.0.62f1\Editor\Data\Managed\UnityEngine\UnityEditor.XRModule.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Collections.LowLevel.ILSupport">
-      <HintPath>C:\Users\User\Desktop\GPG214.1\Library\PackageCache\com.unity.collections@aea9d3bd5e19\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+      <HintPath>D:\Desktop\GPG214.1\Library\PackageCache\com.unity.collections@aea9d3bd5e19\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>C:\Users\User\Desktop\GPG214.1\Library\PackageCache\com.unity.ext.nunit@031a54704bff\net40\unity-custom\nunit.framework.dll</HintPath>
+      <HintPath>D:\Desktop\GPG214.1\Library\PackageCache\com.unity.ext.nunit@031a54704bff\net40\unity-custom\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System.IO.Hashing">
-      <HintPath>C:\Users\User\Desktop\GPG214.1\Library\PackageCache\com.unity.collections@aea9d3bd5e19\Unity.Collections.Tests\System.IO.Hashing\System.IO.Hashing.dll</HintPath>
+      <HintPath>D:\Desktop\GPG214.1\Library\PackageCache\com.unity.collections@aea9d3bd5e19\Unity.Collections.Tests\System.IO.Hashing\System.IO.Hashing.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-      <HintPath>C:\Users\User\Desktop\GPG214.1\Library\PackageCache\com.unity.visualscripting@6279e2b7c485\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+      <HintPath>D:\Desktop\GPG214.1\Library\PackageCache\com.unity.visualscripting@6279e2b7c485\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil">
-      <HintPath>C:\Users\User\Desktop\GPG214.1\Library\PackageCache\com.unity.nuget.mono-cecil@d78732e851eb\Mono.Cecil.dll</HintPath>
+      <HintPath>D:\Desktop\GPG214.1\Library\PackageCache\com.unity.nuget.mono-cecil@d78732e851eb\Mono.Cecil.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe">
-      <HintPath>C:\Users\User\Desktop\GPG214.1\Library\PackageCache\com.unity.collections@aea9d3bd5e19\Unity.Collections.Tests\System.Runtime.CompilerServices.Unsafe\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <HintPath>D:\Desktop\GPG214.1\Library\PackageCache\com.unity.collections@aea9d3bd5e19\Unity.Collections.Tests\System.Runtime.CompilerServices.Unsafe\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>D:\UnityEditor\6000.0.62f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
@@ -864,85 +885,89 @@
       <HintPath>D:\UnityEditor\6000.0.62f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.2D.Runtime">
-      <HintPath>C:\Users\User\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.2D.Runtime.dll</HintPath>
+      <HintPath>D:\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.2D.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>C:\Users\User\Desktop\GPG214.1\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+      <HintPath>D:\Desktop\GPG214.1\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
-      <HintPath>C:\Users\User\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
+      <HintPath>D:\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Shaders">
-      <HintPath>C:\Users\User\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
+      <HintPath>D:\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime.Shared">
-      <HintPath>C:\Users\User\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.Shared.dll</HintPath>
+      <HintPath>D:\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.Shared.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ShaderGraph.Editor">
-      <HintPath>C:\Users\User\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
+      <HintPath>D:\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Editor.Shared">
-      <HintPath>C:\Users\User\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.Shared.dll</HintPath>
+      <HintPath>D:\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.Shared.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>C:\Users\User\Desktop\GPG214.1\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+      <HintPath>D:\Desktop\GPG214.1\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
-      <HintPath>C:\Users\User\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+      <HintPath>D:\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Multiplayer.Center.Editor">
-      <HintPath>C:\Users\User\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.Multiplayer.Center.Editor.dll</HintPath>
+      <HintPath>D:\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.Multiplayer.Center.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.GPUDriven.Runtime">
-      <HintPath>C:\Users\User\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.RenderPipelines.GPUDriven.Runtime.dll</HintPath>
+      <HintPath>D:\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.RenderPipelines.GPUDriven.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="PPv2URPConverters">
-      <HintPath>C:\Users\User\Desktop\GPG214.1\Library\ScriptAssemblies\PPv2URPConverters.dll</HintPath>
+      <HintPath>D:\Desktop\GPG214.1\Library\ScriptAssemblies\PPv2URPConverters.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rendering.LightTransport.Editor">
-      <HintPath>C:\Users\User\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.Rendering.LightTransport.Editor.dll</HintPath>
+      <HintPath>D:\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.Rendering.LightTransport.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
-      <HintPath>C:\Users\User\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.2D.Tilemap.Editor.dll</HintPath>
+      <HintPath>D:\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Config.Runtime">
-      <HintPath>C:\Users\User\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Config.Runtime.dll</HintPath>
+      <HintPath>D:\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Config.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Editor">
-      <HintPath>C:\Users\User\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
+      <HintPath>D:\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
-      <HintPath>C:\Users\User\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+      <HintPath>D:\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Multiplayer.Center.Common">
-      <HintPath>C:\Users\User\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.Multiplayer.Center.Common.dll</HintPath>
+      <HintPath>D:\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.Multiplayer.Center.Common.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:\Users\User\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+      <HintPath>D:\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Editor">
-      <HintPath>C:\Users\User\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
+      <HintPath>D:\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Runtime">
-      <HintPath>C:\Users\User\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+      <HintPath>D:\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>C:\Users\User\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
+      <HintPath>D:\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:\Users\User\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>D:\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime">
-      <HintPath>C:\Users\User\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+      <HintPath>D:\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rendering.LightTransport.Runtime">
-      <HintPath>C:\Users\User\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.Rendering.LightTransport.Runtime.dll</HintPath>
+      <HintPath>D:\Desktop\GPG214.1\Library\ScriptAssemblies\Unity.Rendering.LightTransport.Runtime.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Unity.InputSystem.ForUI.csproj">
       <Project>{91cea427-a204-2a94-1c7b-6b5dd970cdbd}</Project>
       <Name>Unity.InputSystem.ForUI</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Addressables.Editor.csproj">
+      <Project>{b689fa94-909b-4789-f169-f70288407016}</Project>
+      <Name>Unity.Addressables.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Searcher.Editor.csproj">
       <Project>{5da8413c-707b-4d0f-2b07-7b0aed5b22dd}</Project>
@@ -968,6 +993,10 @@
       <Project>{2425f726-1c06-3f49-1f45-f8d39d113b80}</Project>
       <Name>Unity.2D.IK.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.ResourceManager.csproj">
+      <Project>{a60941ed-a9cd-6f2d-1175-c6c2c4fffc50}</Project>
+      <Name>Unity.ResourceManager</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.2D.IK.Runtime.csproj">
       <Project>{efc0cef2-2979-a76a-b994-fc763881d014}</Project>
       <Name>Unity.2D.IK.Runtime</Name>
@@ -992,6 +1021,10 @@
       <Project>{f2dab68f-edca-cc2a-3bb7-e4f5b8b5f7ac}</Project>
       <Name>Unity.2D.Aseprite.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.ScriptableBuildPipeline.Editor.csproj">
+      <Project>{e4c20601-7545-d0dd-07db-e921a31637d7}</Project>
+      <Name>Unity.ScriptableBuildPipeline.Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Mathematics.Editor.csproj">
       <Project>{8c6321a3-0811-9158-862e-2614c16c42cc}</Project>
       <Name>Unity.Mathematics.Editor</Name>
@@ -1004,9 +1037,17 @@
       <Project>{4de4436d-f91c-a42c-ffaa-175935ed484e}</Project>
       <Name>Unity.2D.Animation.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.ScriptableBuildPipeline.csproj">
+      <Project>{c2f93493-b0de-089b-5b39-72904e74228b}</Project>
+      <Name>Unity.ScriptableBuildPipeline</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Collections.csproj">
       <Project>{7f3646d0-6bdb-08e4-aee2-e39f41c390c0}</Project>
       <Name>Unity.Collections</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Addressables.csproj">
+      <Project>{09e51f7a-2f28-f7e6-fd6b-1ced255ed752}</Project>
+      <Name>Unity.Addressables</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.2D.PixelPerfect.Editor.csproj">
       <Project>{e85c0434-48b9-2df1-2a9a-2502d6943273}</Project>
@@ -1032,9 +1073,9 @@
       <Project>{d65d707a-6238-8fd3-2933-6401c8c7053a}</Project>
       <Name>Unity.Collections.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.2D.Tilemap.Extras.Editor.csproj">
-      <Project>{86d169fe-9628-5d3f-52e9-363e165c8c88}</Project>
-      <Name>Unity.2D.Tilemap.Extras.Editor</Name>
+    <ProjectReference Include="Unity.Profiling.Core.csproj">
+      <Project>{99293dfa-9983-bea9-d5f3-ec99083d72a9}</Project>
+      <Name>Unity.Profiling.Core</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.Shared.Editor.csproj">
       <Project>{23148c50-393a-92ab-e9e4-351272be641a}</Project>
@@ -1043,6 +1084,10 @@
     <ProjectReference Include="Unity.VisualScripting.Core.Editor.csproj">
       <Project>{e8db88aa-731e-3778-9475-9b4b8fccfc26}</Project>
       <Name>Unity.VisualScripting.Core.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.2D.Tilemap.Extras.Editor.csproj">
+      <Project>{86d169fe-9628-5d3f-52e9-363e165c8c88}</Project>
+      <Name>Unity.2D.Tilemap.Extras.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.Flow.Editor.csproj">
       <Project>{ab16889d-237b-9e8f-5e15-2cfd4e74d6fe}</Project>
