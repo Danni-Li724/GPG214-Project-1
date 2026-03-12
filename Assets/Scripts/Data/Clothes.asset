@@ -14,5 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CargoTypeId: 2
   DisplayName: Clothes
-  IconSprite: {fileID: -7328080367079999773, guid: c4960f9f360b8cc40bffe828c57c1369, type: 3}
   CargoPrefab: {fileID: 7716328976597286304, guid: 5eaf4c37209fd0748b8088269a760443, type: 3}
+  BaseSpriteKey: Assets/Art/cargo_clothes.png
+  PackagedSpriteKeys:
+  - Assets/Art/package_book.png
+  - Assets/Art/package_glass.png
+  - Assets/Art/package_milk.png
+  - Assets/Art/package_normal.png
+  RequiredPackaging: 3

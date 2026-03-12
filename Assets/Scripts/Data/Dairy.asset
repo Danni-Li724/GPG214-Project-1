@@ -14,5 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CargoTypeId: 3
   DisplayName: Dairy
-  IconSprite: {fileID: -8934703010610236753, guid: 123d51d3d1d03c041bcb6420d556802f, type: 3}
   CargoPrefab: {fileID: 7716328976597286304, guid: 5eaf4c37209fd0748b8088269a760443, type: 3}
+  BaseSpriteKey: Assets/Art/cargo_milk.png
+  PackagedSpriteKeys:
+  - Assets/Art/package_book.png
+  - Assets/Art/package_glass.png
+  - Assets/Art/package_milk.png
+  - Assets/Art/package_normal.png
+  RequiredPackaging: 2

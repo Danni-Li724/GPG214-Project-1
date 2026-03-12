@@ -13,5 +13,7 @@ namespace Game.Data
         [Header("Addressables Sprite Keys")]
         public string BaseSpriteKey; // Sprite key for cargo when it spawns (unpacked)
         public string[] PackagedSpriteKeys = new string[4]; // 4 sprite keys for the 4 packaging outcomes
+        
+        public Gameplay.PackagingType RequiredPackaging;
     }
 }

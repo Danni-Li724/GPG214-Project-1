@@ -5,47 +5,115 @@ namespace Game.Gameplay
 {
     public class CargoQueue : MonoBehaviour
     {
-        private readonly Queue<Cargo> waitingAtPackaging = new Queue<Cargo>();
-        private readonly Queue<Cargo> waitingAtDelivery = new Queue<Cargo>();
+        private readonly Queue<Cargo> queue = new Queue<Cargo>();
+        private Cargo activeForPackaging; // the one cargo currently at the packaging station (or heading there)
+        private readonly Queue<Cargo> readyForPickup = new Queue<Cargo>(); // cargo that finished packaging and is now waiting at delivery
+        
+        private Cargo activeAtDelivery;
 
         public void EnqueueNewCargo(Cargo cargo)
         {
-            waitingAtPackaging.Enqueue(cargo);
+            queue.Enqueue(cargo);
+            CargoMover mover = cargo.GetComponent<CargoMover>();
+            if (mover != null)
+            {
+                mover.ArrivedAtWait += OnCargoArrivedAtWaitPoint;
+                mover.ArrivedAtPackageWait += OnCargoArrivedAtPackageWaitingPoint;
+            }
         }
 
         public bool HasCargoWaitingForPackaging()
         {
-            return waitingAtPackaging.Count > 0;
+            // true only when the active cargo has reached packaging station and is waiting
+            if (activeForPackaging == null) return false;
+
+            CargoMover mover = activeForPackaging.GetComponent<CargoMover>();
+            return mover != null && mover.CurrentState == CargoMover.State.WaitingForPackaging;
         }
 
-        public Cargo PeekWaitingCargo()
+        public Cargo GetActiveCargoForPackaging()
         {
-            if (waitingAtPackaging.Count == 0) return null;
-            return waitingAtPackaging.Peek();
+            return activeForPackaging;
         }
 
-        public void MarkFrontCargoPackaged()
+        public void MarkActiveCargoPackaged()
         {
-            if (waitingAtPackaging.Count == 0) return;
-
-            Cargo cargo = waitingAtPackaging.Dequeue();
-            var mover = cargo.GetComponent<CargoMover>();
+            if (activeForPackaging == null) return;
+            CargoMover mover = activeForPackaging.GetComponent<CargoMover>();
             if (mover != null) mover.MarkPackagedAndContinue();
-
-            waitingAtDelivery.Enqueue(cargo);
+            readyForPickup.Enqueue(activeForPackaging);
+            activeForPackaging = null;
+            TryReleaseNextToPackaging();
+            TryReleaseNextToDelivery();
+            
         }
 
         public bool HasCargoWaitingAtDelivery()
         {
-            // only cargo that actually reached the delivery point is gonna be pickable
-            // for now at least, might change in project 2
-            return waitingAtDelivery.Count > 0;
+            if (activeAtDelivery == null) return false;
+            CargoMover mover = activeAtDelivery.GetComponent<CargoMover>();
+            return mover != null && mover.CurrentState == CargoMover.State.WaitingAtHandoff;
         }
 
         public Cargo TakeCargoReadyForPickup()
         {
-            if (waitingAtDelivery.Count == 0) return null;
-            return waitingAtDelivery.Dequeue();
+            if (!HasCargoWaitingAtDelivery()) return null;
+            Cargo cargo = activeAtDelivery;
+            activeAtDelivery = null;
+            TryReleaseNextToDelivery();
+            return cargo;
+        }
+
+        private void TryReleaseNextToPackaging()
+        {
+            if (activeForPackaging != null) return;
+
+            if (queue.Count == 0) return;
+
+            Cargo candidate = queue.Peek();
+            CargoMover candidateMover = candidate.GetComponent<CargoMover>();
+            if (candidateMover == null) return;
+
+            if (candidateMover.CurrentState != CargoMover.State.WaitingInQueue) return;
+
+            activeForPackaging = queue.Dequeue();
+
+            CargoMover mover = activeForPackaging.GetComponent<CargoMover>();
+            if (mover != null)
+            {
+                mover.ReleaseToPackaging();
+            }
+        }
+        
+        private void OnCargoArrivedAtWaitPoint(CargoMover mover)
+        {
+            TryReleaseNextToPackaging();
+        }
+
+        private void OnCargoArrivedAtPackageWaitingPoint(CargoMover mover)
+        {
+            TryReleaseNextToDelivery();
+        }
+        private void TryReleaseNextToDelivery()
+        {
+            if (activeAtDelivery != null) return;
+
+            if (readyForPickup.Count == 0) return;
+
+            Cargo candidate = readyForPickup.Peek();
+            CargoMover candidateMover = candidate.GetComponent<CargoMover>();
+            if (candidateMover == null) return;
+
+            if (candidateMover.CurrentState != CargoMover.State.WaitingForHandoffQueue) return;
+
+            activeAtDelivery = readyForPickup.Dequeue();
+
+            CargoMover mover = activeAtDelivery.GetComponent<CargoMover>();
+            if (mover != null)
+            {
+                mover.ReleaseToDelivery();
+            }
         }
     }
 }
+

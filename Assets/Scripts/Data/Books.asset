@@ -14,5 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CargoTypeId: 1
   DisplayName: Books
-  IconSprite: {fileID: -2325006211532924113, guid: b80494c14e732774e8a110d141bef617, type: 3}
   CargoPrefab: {fileID: 7716328976597286304, guid: 5eaf4c37209fd0748b8088269a760443, type: 3}
+  BaseSpriteKey: Assets/Art/cargo_books.png
+  PackagedSpriteKeys:
+  - Assets/Art/package_book.png
+  - Assets/Art/package_glass.png
+  - Assets/Art/package_milk.png
+  - Assets/Art/package_normal.png

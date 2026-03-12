@@ -14,10 +14,10 @@ namespace Game.Gameplay
 
         private void Awake()
         {
-            option1.onClick.AddListener(OnOption1);
-            option2.onClick.AddListener(OnOption2);
-            option3.onClick.AddListener(OnOption3);
-            option4.onClick.AddListener(OnOption4);
+            option1.onClick.AddListener(On1);
+            option2.onClick.AddListener(On2);
+            option3.onClick.AddListener(On3);
+            option4.onClick.AddListener(On4);
         }
 
         public void Show(PackagingStation s)
@@ -31,10 +31,9 @@ namespace Game.Gameplay
             station = null;
             gameObject.SetActive(false);
         }
-
-        private async void OnOption1() { if (station != null) await station.SelectPackagingAsync(PackagingType.Option1); }
-        private async void OnOption2() { if (station != null) await station.SelectPackagingAsync(PackagingType.Option2); }
-        private async void OnOption3() { if (station != null) await station.SelectPackagingAsync(PackagingType.Option3); }
-        private async void OnOption4() { if (station != null) await station.SelectPackagingAsync(PackagingType.Option4); }
+        private async void On1() { Debug.Log("PACK BUTTON: heavy"); if (station != null) await station.SelectPackagingAsync(PackagingType.Heavy); }
+        private async void On2() { Debug.Log("PACK BUTTON: fragile"); if (station != null) await station.SelectPackagingAsync(PackagingType.Fragile); }
+        private async void On3() { Debug.Log("PACK BUTTON: fresh"); if (station != null) await station.SelectPackagingAsync(PackagingType.Fresh); }
+        private async void On4() { Debug.Log("PACK BUTTON: normal"); if (station != null) await station.SelectPackagingAsync(PackagingType.Normal); }
     }
 }

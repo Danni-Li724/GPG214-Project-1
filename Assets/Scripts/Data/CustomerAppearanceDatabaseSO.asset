@@ -9,8 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7189bd783ef69d7468e8042bb5241546, type: 3}
-  m_Name: ReactionKeysSO
+  m_Script: {fileID: 11500000, guid: 41e198927baff804aa204e3a05023fa4, type: 3}
+  m_Name: CustomerAppearanceDatabaseSO
   m_EditorClassIdentifier: 
-  SmileKey: Assets/Art/react_happy.png
-  SadKey: Assets/Art/react_sad.png
+  CustomerSpriteKeys:
+  - Assets/Art/customer_blue.png
+  - Assets/Art/customer_green.png
+  - Assets/Art/customer_red.png
+  - Assets/Art/customer_yellow.png

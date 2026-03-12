@@ -14,5 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CargoTypeId: 4
   DisplayName: Glass
-  IconSprite: {fileID: -6913025386824825475, guid: 0d653f10b83aba74ea549d3ee028eee8, type: 3}
   CargoPrefab: {fileID: 7716328976597286304, guid: 5eaf4c37209fd0748b8088269a760443, type: 3}
+  BaseSpriteKey: Assets/Art/cargo_glasses.png
+  PackagedSpriteKeys:
+  - Assets/Art/package_book.png
+  - Assets/Art/package_glass.png
+  - Assets/Art/package_milk.png
+  - Assets/Art/package_normal.png
+  RequiredPackaging: 1

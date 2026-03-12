@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using Game.Core;
 using Game.Data;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Game.Gameplay
 {
@@ -9,7 +10,9 @@ namespace Game.Gameplay
     {
         [SerializeField] private Transform spawnPoint;
         [SerializeField] private Transform packagingPoint;
-        [SerializeField] private Transform deliveryPoint;
+        [SerializeField] private Transform packageWaitPoint;
+        [SerializeField] private Transform waitPoint;
+        [FormerlySerializedAs("handoffPoint")] [SerializeField] private Transform deliveryPoint;
 
         [SerializeField] private CargoQueue cargoQueue;
         [SerializeField] private AddressablesAssetProvider assetProvider;
@@ -19,10 +22,8 @@ namespace Game.Gameplay
             GameObject go = Instantiate(cargoType.CargoPrefab, spawnPoint.position, Quaternion.identity);
             Cargo cargo = go.GetComponent<Cargo>();
             CargoMover mover = go.GetComponent<CargoMover>();
-
             await cargo.InitAsync(cargoType, assetProvider);
-            mover.Configure(packagingPoint, deliveryPoint);
-
+            mover.Configure(waitPoint, packagingPoint, packageWaitPoint, deliveryPoint);
             cargoQueue.EnqueueNewCargo(cargo);
             return cargo;
         }

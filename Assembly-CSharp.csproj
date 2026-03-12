@@ -58,13 +58,17 @@
     <Compile Include="Assets\Scripts\Saving\SaveSystem.cs" />
     <Compile Include="Assets\Scripts\Gameplay\PackagingOptionsPanel.cs" />
     <Compile Include="Assets\Scripts\Gameplay\DeliveryPoint.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\ScoreManager.cs" />
     <Compile Include="Assets\Scripts\Practices\FileSystems.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\YSorter.cs" />
     <Compile Include="Assets\Scripts\UI\MenuIconSelector.cs" />
     <Compile Include="Assets\Scripts\Core Systems\GameSession.cs" />
     <Compile Include="Assets\Scripts\UI\PlayerInGameProfileUI.cs" />
+    <Compile Include="Assets\Scripts\Data\RequestIconDatabaseSO.cs" />
     <Compile Include="Assets\Scripts\Data\AddressableAssetProvider.cs" />
     <Compile Include="Assets\Scripts\Data\PackagingData.cs" />
     <Compile Include="Assets\Scripts\Gameplay\CustomerSpawner.cs" />
+    <Compile Include="Assets\Scripts\Data\CustomerAppearanceDatabaseSO.cs" />
     <Compile Include="Assets\Scripts\Practices\PlayerData.cs" />
     <Compile Include="Assets\Scripts\Gameplay\CargoMover.cs" />
     <Compile Include="Assets\Scripts\Core Systems\SystemFinder.cs" />

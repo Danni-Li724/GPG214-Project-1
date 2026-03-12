@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Game.Data;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Game.Gameplay
 {
@@ -13,12 +14,23 @@ namespace Game.Gameplay
 
         [Header("Wave")]
         [SerializeField] private int waveSize = 4;
+        [SerializeField] private float spawnInterval = 1.0f;
 
         private readonly System.Random randomNumberGeneraor = new System.Random();
 
         private async void Start()
         {
             await StartWaveAsync(waveSize);
+        }
+        
+        private async Task DelaySeconds(float seconds)
+        {
+            if (seconds <= 0f) return;
+            float end = Time.time + seconds;
+            while (Time.time < end)
+            {
+                await Task.Yield();
+            }
         }
 
         public async Task StartWaveAsync(int count)
@@ -30,8 +42,18 @@ namespace Game.Gameplay
             for (int i = 0; i < count; i++)
             {
                 CargoTypeSO type = cargoDatabase.GetRandom();
-                PackagingType pack = (PackagingType)randomNumberGeneraor.Next(0, 4);
+                if (type == null)
+                {
+                    Debug.LogError("CargoDatabaseSO's database list has nulls");
+                    return;
+                }
 
+                if (type.CargoPrefab == null)
+                {
+                    Debug.LogError($"CargoTypeSO '{type.name}' has no prefab");
+                    return;
+                }
+                PackagingType pack = type.RequiredPackaging;
                 requests.Add(new CustomerRequest(type.CargoTypeId, pack));
                 cargoToSpawn.Add(type);
             }
@@ -43,12 +65,14 @@ namespace Game.Gameplay
             for (int i = 0; i < requests.Count; i++)
             {
                 customerSpawner.Spawn(requests[i], i);
+                await DelaySeconds(spawnInterval);
             }
 
             // spawn cargo in shuffled order
             for (int i = 0; i < cargoToSpawn.Count; i++)
             {
                 await cargoSpawner.SpawnAsync(cargoToSpawn[i]);
+                await DelaySeconds(spawnInterval);
             }
         }
 

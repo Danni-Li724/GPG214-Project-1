@@ -8,18 +8,37 @@ namespace Game.Gameplay
     {
         [SerializeField] private Transform[] spawnPoints;
         [SerializeField] private GameObject customerPrefab;
+        [SerializeField] private ScoreManager scoreManager;
 
+        [Header("Streaming")]
         [SerializeField] private AddressablesAssetProvider assetProvider;
         [SerializeField] private ReactionKeysSO reactionKeys;
 
-        public Customer Spawn(CustomerRequest request, int index)
+        [Header("Customer Visuals")]
+        [SerializeField] private CustomerAppearanceDatabaseSO appearanceDatabase;
+        [SerializeField] private RequestIconDatabaseSO requestIconDatabase;
+
+        private readonly System.Random rng = new System.Random();
+
+        public async void Spawn(CustomerRequest request, int index)
         {
             Transform point = spawnPoints[index % spawnPoints.Length];
             GameObject go = Instantiate(customerPrefab, point.position, Quaternion.identity);
 
-            Customer c = go.GetComponent<Customer>();
-            c.Init(request, assetProvider, reactionKeys);
-            return c;
+            Customer customer = go.GetComponent<Customer>();
+
+            string appearanceKey = appearanceDatabase != null
+                ? appearanceDatabase.GetRandomKey(rng)
+                : null;
+
+            await customer.InitAsync(
+                request,
+                appearanceKey,
+                assetProvider,
+                reactionKeys,
+                requestIconDatabase,
+                scoreManager
+            );
         }
     }
 }
