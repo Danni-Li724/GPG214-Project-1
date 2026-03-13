@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\Data\PackagingData.cs" />
     <Compile Include="Assets\Scripts\Gameplay\CustomerSpawner.cs" />
     <Compile Include="Assets\Scripts\Data\CustomerAppearanceDatabaseSO.cs" />
+    <Compile Include="Assets\Scripts\Core Systems\StreamingAssets.cs" />
     <Compile Include="Assets\Scripts\Practices\PlayerData.cs" />
     <Compile Include="Assets\Scripts\Gameplay\CargoMover.cs" />
     <Compile Include="Assets\Scripts\Core Systems\SystemFinder.cs" />
@@ -115,6 +116,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\SDFFunctions.hlsl" />
     <None Include="Library\PackageCache\com.unity.ide.rider@1f60b3138684\ValidationExceptions.json" />
     <None Include="Library\PackageCache\com.unity.nuget.mono-cecil@d78732e851eb\package.json" />
+    <None Include="Assets\StreamingAssets\profile_default.json" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Library\PackageCache\com.unity.visualscripting@6279e2b7c485\ValidationExceptions.json" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />

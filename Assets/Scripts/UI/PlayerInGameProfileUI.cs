@@ -8,34 +8,51 @@ namespace Game.UI
 {
     public class PlayerInGameProfileUI : MonoBehaviour
     {
-        [SerializeField] private TMP_Text nameText;
+         [SerializeField] private TMP_Text nameText;
         [SerializeField] private TMP_Text ageText;
         [SerializeField] private Image iconImage;
-
-        [Header("Icon Sprites")]
-        [SerializeField] private Sprite[] iconSprites;
+        [SerializeField] private Image panelBackground;
+        [SerializeField] private Color[] favColourPalette;
+        [SerializeField] private float pixelsPerUnit = 100f;
+        [SerializeField] private string iconPathPattern = "PlayerIcons/icon_{0}.png";
 
         private void Start()
         {
             // reads from what menu saved
             PlayerProfileData profile = SystemFinder.Instance.SaveSystem.LoadProfileOrDefault();
-            Apply(profile);
+            ApplyTextAndColor(profile);
+            StartCoroutine(LoadAndApplyIcon(profile));
         }
-
-        private void Apply(PlayerProfileData profile)
+        private void ApplyTextAndColor(PlayerProfileData profile)
         {
             if (profile == null) return;
 
-            if (nameText != null) nameText.text = profile.PlayerName;
-            if (ageText != null) ageText.text = profile.PlayerAge.ToString();
+            if (nameText != null) nameText.text = "Name: " + profile.PlayerName;
+            if (ageText != null) ageText.text = "Age: " + profile.PlayerAge.ToString();
 
-            if (iconImage != null && iconSprites != null)
+            if (panelBackground != null && favColourPalette != null && favColourPalette.Length > 0)
             {
-                int id = profile.IconId;
-                if (id >= 0 && id < iconSprites.Length)
-                {
-                    iconImage.sprite = iconSprites[id];
-                }
+                int id = profile.FavColorId;
+                if (id < 0 || id >= favColourPalette.Length) id = 0;
+                panelBackground.color = favColourPalette[id];
+            }
+        }
+
+        private System.Collections.IEnumerator LoadAndApplyIcon(PlayerProfileData profile)
+        {
+            if (profile == null || iconImage == null) yield break;
+
+            int id = profile.IconId;
+            if (id < 0) id = 0;
+
+            string path = string.Format(iconPathPattern, id);
+
+            Sprite loaded = null;
+            yield return StreamingAssets.LoadSprite(path, pixelsPerUnit, s => loaded = s);
+
+            if (loaded != null)
+            {
+                iconImage.sprite = loaded;
             }
         }
     }

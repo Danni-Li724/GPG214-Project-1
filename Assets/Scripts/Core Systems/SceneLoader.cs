@@ -5,7 +5,7 @@ namespace Game.Core
     public static class SceneLoader
     {
         public const string MenuScene = "Menu";
-        public const string GameplayScene = "Game";
+        public const string GameplayScene = "Actual Game";
         public const string ResultsScene = "Results";
 
         public static void LoadMenu()

@@ -2392,12 +2392,21 @@ MonoBehaviour:
   iconButtons:
   - IconId: 1
     Button: {fileID: 103308874}
+    TargetImage: {fileID: 103308872}
+    IconRelativePathOverride: 
   - IconId: 2
     Button: {fileID: 1657442022}
+    TargetImage: {fileID: 1657442020}
+    IconRelativePathOverride: 
   - IconId: 3
     Button: {fileID: 691192606}
+    TargetImage: {fileID: 691192604}
+    IconRelativePathOverride: 
   - IconId: 4
     Button: {fileID: 2140365480}
+    TargetImage: {fileID: 2140365481}
+    IconRelativePathOverride: 
+  pixelsPerUnit: 100
 --- !u!224 &1955115745
 RectTransform:
   m_ObjectHideFlags: 0

@@ -1,5 +1,7 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using Game.Core;
 
 namespace Game.UI
 {
@@ -10,15 +12,20 @@ namespace Game.UI
         {
             public int IconId;
             public Button Button;
+            
+            public Image TargetImage;
+            public string IconRelativePathOverride;
         }
 
         [SerializeField] private IconButton[] iconButtons;
+        [SerializeField] private float pixelsPerUnit = 100f; 
 
         public int SelectedIconId { get; private set; }
 
         private void Awake()
         {
             HookButtons();
+            StartCoroutine(LoadAllIcons());
         }
 
         private void HookButtons()
@@ -55,6 +62,32 @@ namespace Game.UI
         public void SetSelectedIcon(int iconId)
         {
             SelectedIconId = iconId;
+        }
+        
+        private IEnumerator LoadAllIcons()
+        {
+            if (iconButtons == null) yield break;
+
+            for (int i = 0; i < iconButtons.Length; i++)
+            {
+                IconButton entry = iconButtons[i];
+                if (entry == null) continue;
+                if (entry.TargetImage == null) continue;
+
+                string path = entry.IconRelativePathOverride;
+                if (string.IsNullOrWhiteSpace(path))
+                {
+                    path = $"PlayerIcons/icon_{entry.IconId}.png";
+                }
+
+                Sprite loaded = null;
+                yield return StreamingAssets.LoadSprite(path, pixelsPerUnit, s => loaded = s);
+
+                if (loaded != null)
+                {
+                    entry.TargetImage.sprite = loaded;
+                }
+            }
         }
     }
 }
