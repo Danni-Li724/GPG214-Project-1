@@ -4,6 +4,7 @@ namespace Game.Core
 {
     /// <summary>
     /// holds current session runtime data (not persistent)
+    /// not in use
     /// </summary>
     [Serializable]
     public class GameSession

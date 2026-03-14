@@ -1,3 +1,5 @@
+using System.IO;
+using Game.Saving;
 using UnityEngine;
 
 namespace Game.Gameplay
@@ -29,5 +31,21 @@ namespace Game.Gameplay
             RightCargoWrongPackagingCount = 0;
             PerfectDeliveryCount = 0;
         }
+        
+        public void SaveScoresToXml()
+        {
+            ScoreResultsData data = new ScoreResultsData();
+            data.WrongCargoCount = WrongCargoCount;
+            data.RightCargoWrongPackagingCount = RightCargoWrongPackagingCount;
+            data.PerfectDeliveryCount = PerfectDeliveryCount;
+
+            MyXmlSerializer.Save(ScorePaths.ScoreXmlPath, data);
+        }
+    }
+    
+    public static class ScorePaths
+    {
+        public static string ScoreXmlPath =>
+            Path.Combine(Application.persistentDataPath, "scores.xml");
     }
 }

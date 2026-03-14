@@ -1,5 +1,7 @@
 using System.Threading.Tasks;
 using UnityEngine;
+using Game.Data;
+using Game.Core;
 
 namespace Game.Gameplay
 {
@@ -7,6 +9,11 @@ namespace Game.Gameplay
     {
         [SerializeField] private CargoQueue cargoQueue;
         [SerializeField] private PackagingOptionsPanel panel;
+        
+        [Header("Packaging Sfx")]
+        [SerializeField] private PackagingSfxDatabaseSO packagingSfxDatabase;
+        [SerializeField] private AudioLoader audioLoader;
+        [SerializeField] private SfxPlayer sfxPlayer;
 
         private void Awake()
         {
@@ -32,6 +39,16 @@ namespace Game.Gameplay
             CargoMover mover = cargo.GetComponent<CargoMover>();
             if (mover == null || mover.CurrentState != CargoMover.State.WaitingForPackaging) return;
             await cargo.ApplyPackagingAsync(type);
+            if (packagingSfxDatabase != null && audioLoader != null && sfxPlayer != null)
+            {
+                if (packagingSfxDatabase.TryGet(type, out var entry))
+                {
+                    audioLoader.LoadWav(entry.WavFilename + ".wav", clip =>
+                    {
+                        sfxPlayer.PlayOneShot(clip, 1f, 1f);
+                    });
+                }
+            }
             mover.MarkPackagedAndContinue();
             cargoQueue.MarkActiveCargoPackaged();
             if (panel != null) panel.Hide();

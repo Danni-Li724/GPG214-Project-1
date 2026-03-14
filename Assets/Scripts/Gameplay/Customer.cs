@@ -17,6 +17,7 @@ namespace Game.Gameplay
         private RequestIconDatabaseSO requestIcons;
         
         private ScoreManager scoreManager;
+        private ResultsManager resultsManager;
 
         public CustomerRequest Request { get; private set; }
 
@@ -56,6 +57,8 @@ namespace Game.Gameplay
                     requestRenderer.enabled = true;
                 }
             }
+            
+            resultsManager = FindFirstObjectByType<ResultsManager>();
         }
 
         public bool CanInteract(PlayerInteract player)
@@ -89,6 +92,10 @@ namespace Game.Gameplay
             await ShowReactionAsync(success);
 
             player.DropAndDestroyCargo();
+            if (resultsManager != null)
+            {
+                resultsManager.NotifyCustomerServed();
+            }
         }
 
         private async Task ShowReactionAsync(bool success)

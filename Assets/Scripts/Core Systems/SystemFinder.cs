@@ -1,3 +1,4 @@
+using Game.Saving;
 using UnityEngine;
 
 namespace Game.Core
@@ -11,7 +12,7 @@ namespace Game.Core
 
         [Header("Systems")]
         public Game.Saving.SaveSystem SaveSystem;
-        public Game.Core.GameSession GameSession;
+        public Game.Core.GameSession GameSession; // currently not in use but might use in project 2
 
         private void Awake()
         {
@@ -22,6 +23,8 @@ namespace Game.Core
             }
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            
+            if (SaveSystem == null) SaveSystem = FindFirstObjectByType<SaveSystem>();
         }
     }
 }

@@ -38,7 +38,8 @@ namespace Game.Gameplay
             // all customer/cargo requests are matched (same cargo type id for a pair)
             List<CustomerRequest> requests = new List<CustomerRequest>(count);
             List<CargoTypeSO> cargoToSpawn = new List<CargoTypeSO>(count);
-
+            // give result mnager the total count to determine when to show results button
+            FindFirstObjectByType<ResultsManager>()?.SetTotalCustomers(count);
             for (int i = 0; i < count; i++)
             {
                 CargoTypeSO type = cargoDatabase.GetRandom();

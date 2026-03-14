@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -33,7 +34,7 @@ namespace Game.UI
         {
             StartCoroutine(LoadAndApplyProfile());
         }
-        private System.Collections.IEnumerator LoadAndApplyProfile()
+        private IEnumerator LoadAndApplyProfile()
         {
             var save = SystemFinder.Instance.SaveSystem;
             if (save.HasProfile())

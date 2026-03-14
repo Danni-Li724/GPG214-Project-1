@@ -8,6 +8,10 @@ namespace Game.Saving
     /// </summary>
     public class SaveSystem : MonoBehaviour
     {
+        void Start()
+        {
+            DontDestroyOnLoad(this);
+        }
         public bool HasProfile()
         {
             return System.IO.File.Exists(SavePaths.ProfilePath);

@@ -9,11 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 20647d75d71cdf145bdb12365344f52d
   - enabled: 1
-    path: Assets/Scenes/Game (old).unity
-    guid: 180b0cdf5af168a408ba4509119833b3
-  - enabled: 1
     path: Assets/Scenes/Actual Game.unity
     guid: e11403595a7a74748be982241d1185ed
+  - enabled: 1
+    path: Assets/Scenes/Results.unity
+    guid: 606f7fae0d81fce4db8d5b28c3d0c2d6
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 0a176dcb752ad264b9250b1d6bb45c70, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
