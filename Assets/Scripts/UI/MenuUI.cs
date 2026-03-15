@@ -49,9 +49,32 @@ namespace Game.UI
             string json = null;
             yield return StreamingAssets.LoadText(defaultProfileJsonPath, t => json = t);
 
-            if (!string.IsNullOrWhiteSpace(json))
+            /*if (!string.IsNullOrWhiteSpace(json))
             {
                 PlayerProfileData profile = JsonUtility.FromJson<PlayerProfileData>(json);
+                if (profile != null)
+                {
+                    defaultProfileFromJson = profile;
+                    ApplyProfileToUI(profile);
+                    yield break;
+                }
+            }*/
+            
+            // optimized from above segment to catch exception and print error,
+            // safely loads my fallback values without crashing
+            if (!string.IsNullOrWhiteSpace(json))
+            {
+                PlayerProfileData profile = null;
+            
+                try
+                {
+                    profile = JsonUtility.FromJson<PlayerProfileData>(json);
+                }
+                catch (System.Exception e)
+                {
+                    Debug.LogWarning($"default profile JSON failed, now using hardcoded defaults. Error: {e.Message}");
+                }
+
                 if (profile != null)
                 {
                     defaultProfileFromJson = profile;

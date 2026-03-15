@@ -3,6 +3,9 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 
+/// <summary>
+// builds all assigned asset bundles into StreamingAssets so they can be loaded at runtime
+/// </summary>
 public static class BuildAssetBundles
 {
     [MenuItem("Assets/Build AssetBundles")]

@@ -23,16 +23,17 @@ namespace Game.Gameplay
 
         private void Start()
         {
+            // error handling:
             if (string.IsNullOrWhiteSpace(imageUrl))
             {
-                Debug.LogWarning("imageUrl is empty.");
+                Debug.LogWarning("imageUrl is empty, please set imageUrl");
                 return;
             }
 
             StartCoroutine(DownloadAndApply());
         }
 
-        private IEnumerator DownloadAndApply()
+        private IEnumerator DownloadAndApply() 
         {
             using (UnityWebRequest req = UnityWebRequestTexture.GetTexture(imageUrl))
             {
@@ -40,7 +41,8 @@ namespace Game.Gameplay
 
                 if (req.result != UnityWebRequest.Result.Success)
                 {
-                    Debug.LogWarning($"download failed {req.error}\nURL: {imageUrl}");
+                    // error handling (this error actually happens quite frequently...):                                                                              
+                    Debug.LogWarning($"download failed {req.error}\nURL: {imageUrl}"); 
                     yield break;
                 }
 

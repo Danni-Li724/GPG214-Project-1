@@ -21,6 +21,7 @@ namespace Game.Core
         {
             if (string.IsNullOrWhiteSpace(filename))
             {
+                Debug.LogWarning("AudioLoader received an empty filename.");
                 onLoaded?.Invoke(null);
                 yield break;
             }
@@ -33,6 +34,13 @@ namespace Game.Core
 
             string relativePath = Path.Combine(audioFolderRelative, filename);
             string fullPath = Path.Combine(Application.streamingAssetsPath, relativePath);
+            // explicit file check before load as required from brief:
+            if (!File.Exists(fullPath)) 
+            {
+                Debug.LogWarning($"audio file missing. falling back to null/default. Path: {fullPath}");
+                onLoaded?.Invoke(null);
+                yield break;
+            }
 
             using (UnityWebRequest req = UnityWebRequestMultimedia.GetAudioClip(fullPath, AudioType.WAV))
             {
@@ -40,12 +48,21 @@ namespace Game.Core
 
                 if (req.result != UnityWebRequest.Result.Success)
                 {
-                    Debug.LogWarning($"WAV load failed: {relativePath} | {req.error}");
+                    // corrupted/invalid audio now fails with error log
+                    Debug.LogWarning($"audio load failed or file was corrupt: {relativePath} | {req.error}");
                     onLoaded?.Invoke(null);
                     yield break;
                 }
 
                 AudioClip clip = DownloadHandlerAudioClip.GetContent(req);
+
+                if (clip == null)
+                {
+                    Debug.LogWarning($"Audio clip content was null after loading. File may be invalid: {relativePath}");
+                    onLoaded?.Invoke(null);
+                    yield break;
+                }
+
                 clipCache[filename] = clip;
                 onLoaded?.Invoke(clip);
             }

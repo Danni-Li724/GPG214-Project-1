@@ -9,6 +9,7 @@ namespace Game.Saving
     {
         public static void Save(string path, ScoreResultsData data)
         {
+            // similar try catch syntax to handle failed save & stream
             try
             {
                 string dir = Path.GetDirectoryName(path);
@@ -25,7 +26,8 @@ namespace Game.Saving
             }
             catch (System.Exception e)
             {
-                Debug.LogWarning($"xml save failed: {e.Message}");
+                // explicit error handling:
+                Debug.LogWarning($"score XML save failed: {e.Message}");
             }
         }
 

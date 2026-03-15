@@ -658,6 +658,8 @@ MonoBehaviour:
   - {fileID: 1928253372}
   - {fileID: 945804304}
   spawnedParent: {fileID: 600388933}
+  poolCapacity: 5
+  destroyOverwritten: 1
 --- !u!4 &896800164
 Transform:
   m_ObjectHideFlags: 0
