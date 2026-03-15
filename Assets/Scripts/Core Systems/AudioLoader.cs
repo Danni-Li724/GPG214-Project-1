@@ -41,8 +41,9 @@ namespace Game.Core
                 onLoaded?.Invoke(null);
                 yield break;
             }
-
-            using (UnityWebRequest req = UnityWebRequestMultimedia.GetAudioClip(fullPath, AudioType.WAV))
+            string url = "file://" + fullPath;
+            using (UnityWebRequest req = UnityWebRequestMultimedia.GetAudioClip(url, AudioType.WAV))
+            // using (UnityWebRequest req = UnityWebRequestMultimedia.GetAudioClip(fullPath, AudioType.WAV))
             {
                 yield return req.SendWebRequest();
 
@@ -68,4 +69,4 @@ namespace Game.Core
             }
         }
     }
-}
+} 

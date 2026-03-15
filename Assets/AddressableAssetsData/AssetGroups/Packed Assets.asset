@@ -15,11 +15,6 @@ MonoBehaviour:
   m_GroupName: Packed Assets
   m_GUID: 1bd72d1ba5cef9e45bac1dee461e7e82
   m_SerializeEntries:
-  - m_GUID: 0ca70e839f3d00b488baaf11441d2894
-    m_Address: Assets/Art/icon_boy.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0d653f10b83aba74ea549d3ee028eee8
     m_Address: Assets/Art/cargo_glasses.png
     m_ReadOnly: 0
@@ -75,16 +70,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 94132cc1161ffd3419a2be3eeffa274e
-    m_Address: Assets/Art/icon_man.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 97be87b7d3476ad4cac19959336ec61a
-    m_Address: Assets/Art/icon_girl.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a507225da9059a64c96186d719976fb3
     m_Address: Assets/Art/request_milk.png
     m_ReadOnly: 0
@@ -107,11 +92,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c4960f9f360b8cc40bffe828c57c1369
     m_Address: Assets/Art/cargo_clothes.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: cd2d177ec87fc5d43b08ab7f75a561af
-    m_Address: Assets/Art/icon_woman.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
