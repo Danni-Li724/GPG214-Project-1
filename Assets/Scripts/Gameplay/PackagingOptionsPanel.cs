@@ -35,5 +35,15 @@ namespace Game.Gameplay
         private async void On2() { Debug.Log("PACK BUTTON: fragile"); if (station != null) await station.SelectPackagingAsync(PackagingType.Fragile); }
         private async void On3() { Debug.Log("PACK BUTTON: fresh"); if (station != null) await station.SelectPackagingAsync(PackagingType.Fresh); }
         private async void On4() { Debug.Log("PACK BUTTON: normal"); if (station != null) await station.SelectPackagingAsync(PackagingType.Normal); }
+        
+        public void QuitGame()
+        {
+            Application.Quit();
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#endif
+        }
+    
     }
+    
 }
